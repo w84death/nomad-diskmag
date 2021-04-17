@@ -12,36 +12,60 @@ from guizero import App, MenuBar, Text, Picture, PushButton, TextBox, Window, Bo
 ## CONFIG
 APP_TITLE = "RPiFDDMag #1"
 ISSUE = 1
-CHAPTERS_DIR = "articles"
 
-FDD_IMAGE = "assets/fdd.gif"
+APP_VERSION = "0.01"
+APP_WIDTH = 480
+APP_HEIGHT = 640
+CHAPTERS_DIR = "chapters"
+COVER_IMAGE = "assets/fdd.gif"
 COVER_BG_COLOR = "#8a1630"
-TITLE_BG_COLOR = "#62263f"
+MAG_BG_COLOR = "#351a06"
+ART_BG_COLOR = "#1b1b1b"
 TEXT_COLOR = "#f8f8f8"
+TITLE_BG_COLOR = "#62263f"
 
-APP_WIDTH=480
-APP_HEIGHT=640
 
 ## SETUP
 Mag = App(title=APP_TITLE,
 	width=APP_WIDTH,
 	height=APP_HEIGHT)
-ArticleBox = Box(Mag)
+ChapterBox = Box(Mag, width="fill", height="fill")
 IndexBox = Box(Mag)
 CoverBox = Box(Mag)
 
+article_title = Text(ChapterBox, 
+	text="",
+	size=24,
+	width="fill")
+article_info = Text(ChapterBox, 
+	text="",
+	size=11,
+	width="fill")
+article_body = TextBox(ChapterBox, 
+	text="",
+	enabled=False,
+	multiline=True,
+	scrollbar=True,
+	align="left",
+	width="fill",
+	height="fill")
+
 def SetupWindow():
 	Mag.bg = COVER_BG_COLOR
+	Mag.font = "Liberation Sans"
+	Mag.text_size = 14
+	Mag.text_color =  TEXT_COLOR
+	
 	MenuBar(Mag,
-		toplevel=["Index", "Magazine"],
+		toplevel=["Magazine", "About"],
 		options=[
 			[ 
-				["Cover", ShowCover], 
-				["Chapters", ShowIndex]
+				["List Chapters", ShowIndex],
+				["Show Cover", ShowCover],
+				["Close", CloseApp]
 			],
 			[
-				["About", ShowAbout],
-				["Close", CloseApp]
+				["Application", ShowAbout],
 			]
 		])
 
@@ -49,22 +73,15 @@ def SetupWindow():
 def CreateCover():
 	Text(CoverBox, 
 		text="Welcome to the",
-		size=18,
-		color=TEXT_COLOR,
-		font="Liberation Sans")
+		size=18)
 	Text(CoverBox, 
 		text="Raspberry Pi FDD Magazine",
-		size=24,
-		color=TEXT_COLOR,
-		bg=TITLE_BG_COLOR,
-		font="Liberation Sans")
+		size=24)
 	Text(CoverBox, 
 		text="ISSUE #" + str(ISSUE),
-		size=18,
-		color=TEXT_COLOR,
-		font="Liberation Sans")
+		size=18)
 	Picture(CoverBox,
-		image=FDD_IMAGE)
+		image=COVER_IMAGE)
 	BottomMenu = Box(CoverBox, 
 		align="bottom",
 		width=int(APP_WIDTH*0.75),
@@ -80,67 +97,48 @@ def CreateCover():
 
 def ShowCover():
 	Mag.title = "{title} - COVER".format(title=APP_TITLE)
+	Mag.bg = COVER_BG_COLOR
 	CoverBox.show()
 	IndexBox.hide()
-	ArticleBox.hide()
+	ChapterBox.hide()
 		
 def CloseApp():
 	Mag.destroy()
 
 def ShowAbout():
-	print("about")
+	Mag.info("About", "RPi FDD Mag\nVersion {version}\ngithub.com/w84death/rpi-fdd-mag".format(version=APP_VERSION))
 
 def CreateIndex():
 	Text(IndexBox, 
 		text="CHAPTERS",
 		size=24,
-		color=TEXT_COLOR,
-		font="Liberation Sans",
 		width="fill")
 	
 	
 	chapters = os.listdir(CHAPTERS_DIR)
 	for chapter in chapters:
-		title, author, article, line_cunt = GetChapterData(chapter)
+		title, author, article = GetChapterData(chapter)
 		PushButton(IndexBox,
 			command=ShowArticle,
 			args=[chapter],
 			text=title)
 
 def ShowIndex():
+	Mag.bg = MAG_BG_COLOR
 	Mag.title = "{title} - CHAPTERS".format(title=APP_TITLE)
 	IndexBox.show()
 	CoverBox.hide()
-	ArticleBox.hide()
+	ChapterBox.hide()
 
 def ShowArticle(chapter):
-	title, author, article, line_cunt = GetChapterData(chapter)
+	Mag.bg = ART_BG_COLOR
+	title, author, article = GetChapterData(chapter)
 
 	Mag.title = "{title} - {chapter}".format(title=APP_TITLE, chapter=title)
-	Text(ArticleBox, 
-		text=title,
-		size=24,
-		color=TEXT_COLOR,
-		font="Liberation Sans",
-		width="fill")
-	Text(ArticleBox, 
-		text="Writen by: {author} / Lines: {lines}".format(author=author, lines=line_cunt),
-		size=12,
-		color=TEXT_COLOR,
-		font="Liberation Sans",
-		width="fill")
-	article_box = TextBox(ArticleBox, 
-		text=article,
-		enabled=False,
-		multiline=True,
-		scrollbar=True,
-		align="left",
-		width="fill",
-		height="fill")
-	article_box.text_size=14
-	article_box.text_color=TEXT_COLOR
-	article_box.font="Liberation Sans"
-	ArticleBox.show()
+	article_title.value = title
+	article_info.value = "Writen by {author}".format(author=author)
+	article_body.value = article 
+	ChapterBox.show()
 	IndexBox.hide()
 
 def GetChapterData(chapter):
@@ -159,7 +157,7 @@ def GetChapterData(chapter):
 			line_count += 1
 	
 	file.close()
-	return title, author, article, line_count - 2
+	return title, author, article
 
 ## RUN
 
