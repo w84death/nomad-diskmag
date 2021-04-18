@@ -15,22 +15,24 @@ from scene import Scene
 class Mag:
     resolution = (0,0)
     scenes = []
+    current_scene = 0
     shortcuts = {
         K_1: 'self.change_scene(0)',
         K_2: 'self.change_scene(1)',
-        K_3: 'self.change_scene(2)',
+        K_n: 'self.next_scene()',
+        K_m: 'self.change_page()',
         K_ESCAPE: 'self.quit()',
     }
     running = True
     drawing = False
 
-    def __init__(self, resolution, caption):
+    def __init__(self, resolution, caption, chapters):
         pygame.init()
         flags = NOFRAME
         Mag.resolution = resolution
         Mag.screen = pygame.display.set_mode(resolution)
         pygame.display.set_caption(caption)
-        Mag.chapter = Chapter()
+        Mag.chapter = Chapter(chapters)
         
 
     def do_shortcut(self, event):
@@ -40,10 +42,19 @@ class Mag:
         if k in self.shortcuts:
             exec(self.shortcuts[k])
 
-    def change_scene(self,scene_id):
+    def change_scene(self, scene_id):
         self.scene = self.scenes[scene_id]
-        pygame.display.set_caption(self.scene.caption)       
-            
+        pygame.display.set_caption(self.scene.caption)  
+
+    def change_page(self):
+        self.scene.paginator.change_page()
+
+    def next_scene(self):
+        self.current_scene += 1
+        if self.current_scene > len(self.scenes) - 1:
+                self.current_scene = 0
+        self.change_scene(self.current_scene)
+
     def quit(self):
         self.running = False
 

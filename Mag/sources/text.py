@@ -1,37 +1,73 @@
 import pygame
 from pygame.locals import *
+from itertools import chain
+import textwrap
 
 class Text():
     fontname = None
     fontsize = 24
+    line_height = 18
     fontcolor = Color('black')
     background = None
     italic = False
     bold = False
     underline = False
+    page = 0
+    
 
-    def __init__(self, mag, text, pos, size=24, color="black", align="left"):
+    def __init__(self, mag, text, pos, size=24, color="black", align="left", column_limit=60, page=0):
         self.Mag = mag
+        self.font = pygame.font.Font(self.fontname, self.fontsize)
         self.text = text
+        self.page = page
         self.pos = pos
         self.align = align
         self.fontname = None
         self.fontsize = size
         self.fontcolor = Color(color)
-        self.set_font()
+        self.column_limit = column_limit
+        self.rendered_data = []
         self.render()
         self.Mag.scene.add(self)
-    
-    def set_font(self):
-        self.font = pygame.font.Font(self.fontname, self.fontsize)
+        self.Mag.scene.paginator = self        
 
     def render(self):
-        self.img = self.font.render(self.text, True, self.fontcolor)
-        self.rect = self.img.get_rect()
-        if self.align == "left":
-            self.rect.topleft = self.pos
-        if self.align == "center":
-            self.rect.midtop = self.pos
+        line = 0
+        page = 0
+        max_lines = 20
+        wrapped_text = []
+        
+        for paragraph in self.text.split('\n'):
+            wrapped_text.append(textwrap.fill(paragraph, self.column_limit))
+        
+
+        for part in wrapped_text:
+            for line_of_text in part.split('\n'):
+                rendered_text = self.font.render(line_of_text, True, self.fontcolor)
+                rect = rendered_text.get_rect()
+                
+                if self.align == "left":
+                    rect.topleft = self.pos
+                if self.align == "center":
+                    rect.midtop = self.pos
+
+                rect[1] += self.line_height * line
+                self.rendered_data.append((rendered_text, rect, page))
+                if(line >= max_lines):
+                    page += 1
+                    line = 0
+                line += 1
+
+        self.pages = page
+
+
+    def change_page(self):
+        self.page += 1
+        if self.page > self.pages:
+            self.page = 0
 
     def draw(self):
-        self.Mag.screen.blit(self.img, self.rect)
+        for data in self.rendered_data:
+            if data[2] == self.page:
+                self.Mag.screen.blit(data[0],data[1])
+            

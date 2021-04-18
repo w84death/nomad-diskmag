@@ -3,15 +3,14 @@ class Chapter:
     directory = "chapters"
     collection = []
 
-    def __init__(self):
+    def __init__(self, chapters):
+        self.chapters = chapters
         self.get_collection()
 
     def get_collection(self):
-        chapters = os.listdir(self.directory)
-        
-        for chapter_filename in chapters:
+        for chapter_filename in self.chapters:
             title, author, article = self.get_data(chapter_filename)
-            self.collection.append((title, author, article))
+            self.collection.append((chapter_filename, title, author, article))
 
     def get_data(self, chapter_filename):
         line_count = 0
