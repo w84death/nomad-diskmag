@@ -1,5 +1,5 @@
 # Raspberry Pi FDD Magazine
-![Floppy](Mag/assets/fdd.gif)
+![Floppy](screens/fdd.gif)
 
 Magazine on a 1.44 floppy tailored for Raspberry Pi computers. 
 
