@@ -8,14 +8,7 @@ class Picture:
         self.dir = dir
         self.file = file
         self.pos = pos
-        self.render()
         self.Mag.scene.add(self)
 
-    def render(self):
-        self.img = pygame.image.load("{dir}/{file}".format(dir=self.directory, file=self.file))
-        self.img.convert()
-        self.rect = self.img.get_rect()
-        self.rect.center = self.pos
-
     def draw(self):
-        self.Mag.screen.blit(self.img, self.rect)
+        pygame.draw.rect(Mag.screen, WHITE, (50, 20, 120, 100))

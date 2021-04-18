@@ -17,10 +17,14 @@ class MagazineIssue1(Mag):
         super().__init__(resolution=self.resolution, caption=self.caption, chapters=self.chapters)
         
         # COVER
-        Scene(Mag, Text, caption='Cover', title="Raspberry Pi FDD Diskmag", bg="red", color="white", align="center")
-        Text(Mag, 'Issue #0.999', pos=(245,45), align="center", size=28, color="white")
-        Text(Mag, 'Welcome to the magazine! Fresh from the floppy..', pos=(245,90), align="center", color="white")
-        Picture(Mag, file="fdd.gif", pos=(245,320))
+        Scene(Mag, Text, caption='Cover', title="Raspberry Pi FDD Diskmag", bg="#ccc39d", color="white", align="center")
+        Clipart(Mag, "floppy", (480/2-152/2,300))
+
+        Text(Mag, "Issue #0, 04/2021", pos=(245,45), align="center", size=28, color="#b21cb0")
+        Text(Mag, "by Krzysztof Krystian Jankowski", pos=(245,80), align="center", color="#888888")
+        Text(Mag, 'Welcome to the magazine! Fresh from the floppy..', pos=(245,540), align="center", column_limit=24)
+
+        
 
         # CHAPTERS / INDEX
         Scene(Mag, Text, caption='Chapters', title="Chapters", bg="yellow")

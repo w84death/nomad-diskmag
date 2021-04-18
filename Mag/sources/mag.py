@@ -11,6 +11,7 @@ from chapter import Chapter
 from text import Text
 from picture import Picture
 from scene import Scene
+from clipart import Clipart
 
 class Mag:
     resolution = (0,0)
@@ -55,6 +56,10 @@ class Mag:
                 self.current_scene = 0
         self.change_scene(self.current_scene)
 
+    def go_next_virtual_page(self):
+        if not self.scene.paginator.change_page():
+            self.next_scene()
+
     def quit(self):
         self.running = False
 
@@ -67,7 +72,9 @@ class Mag:
                 if event.type == QUIT:
                     self.running = False
                 if event.type == KEYDOWN:
-                    self.do_shortcut(event)          
+                    self.do_shortcut(event)  
+                elif event.type == MOUSEBUTTONDOWN:
+                    self.go_next_virtual_page()   
             if self.drawing:
                 self.scene.draw()
         pygame.quit()

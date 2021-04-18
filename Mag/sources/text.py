@@ -60,6 +60,8 @@ class Text():
         self.page += 1
         if self.page > self.pages:
             self.page = 0
+            return False
+        return True
 
     def draw(self):
         for data in self.rendered_data:
