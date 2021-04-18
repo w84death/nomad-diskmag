@@ -1,4 +1,4 @@
 #!/bin/bash
-echo "RaspberryPi FDD Mag is running..."
-python3 rpi-fdd-mag.py
+echo "Raspberry Pi FDD Magazine - Issue #1 is running..."
+python3 sources/mag_issue_1.py
 echo "Good bye!"
