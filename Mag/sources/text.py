@@ -4,24 +4,19 @@ from itertools import chain
 import textwrap
 
 class Text():
-    fontname = None
-    fontsize = 24
+    fontname = pygame.font.match_font("Liberation Sans")
+    fontsize = 20
     line_height = 18
     fontcolor = Color('black')
-    background = None
-    italic = False
-    bold = False
-    underline = False
     page = 0
     
 
-    def __init__(self, mag, text, pos, size=24, color="black", align="left", column_limit=60, page=0):
+    def __init__(self, mag, text, pos, size=20, color="black", align="left", column_limit=50, page=0):
         self.Mag = mag
         self.text = text
         self.page = page
         self.pos = pos
         self.align = align
-        self.fontname = None
         self.fontsize = size
         self.fontcolor = Color(color)
         self.column_limit = column_limit

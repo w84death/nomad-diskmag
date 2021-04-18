@@ -18,7 +18,7 @@ class MagazineIssue1(Mag):
         
         # COVER
         Scene(Mag, Text, caption='Cover', title="Raspberry Pi FDD Diskmag", bg="red", color="white", align="center")
-        Text(Mag, 'Issue #0.999', pos=(245,45), align="center", size=32, color="white")
+        Text(Mag, 'Issue #0.999', pos=(245,45), align="center", size=28, color="white")
         Text(Mag, 'Welcome to the magazine! Fresh from the floppy..', pos=(245,90), align="center", color="white")
         Picture(Mag, file="fdd.gif", pos=(245,320))
 
