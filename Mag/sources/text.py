@@ -17,7 +17,6 @@ class Text():
 
     def __init__(self, mag, text, pos, size=24, color="black", align="left", column_limit=60, page=0):
         self.Mag = mag
-        self.font = pygame.font.Font(self.fontname, self.fontsize)
         self.text = text
         self.page = page
         self.pos = pos
@@ -27,6 +26,7 @@ class Text():
         self.fontcolor = Color(color)
         self.column_limit = column_limit
         self.rendered_data = []
+        self.font = pygame.font.Font(self.fontname, self.fontsize)
         self.render()
         self.Mag.scene.add(self)
         self.Mag.scene.paginator = self        
