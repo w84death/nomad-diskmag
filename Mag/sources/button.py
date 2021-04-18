@@ -18,7 +18,7 @@ class Button():
 
 	def render(self):
 		font = pygame.font.Font(self.fontname, self.fontsize)
-		self.rendered_text = font.render(self.text, True, Color(self.color))
+		self.rendered_text = font.render("  {text}  ".format(text=self.text), True, Color(self.color))
 		self.rect = self.rendered_text.get_rect()
 		self.rect.center = self.pos
 
