@@ -4,7 +4,7 @@ from pygame.locals import *
 class Button():
 	fontname = pygame.font.match_font("Liberation Sans")
 
-	def __init__(self, mag, text, pos, link, size=20, color="#f8f8f8", bg="#777777", shadow="#222222"):
+	def __init__(self, mag, text, pos, link, size=20, color="#f8f8f8", bg="#777777", shadow="#222222", pivot="center"):
 		self.Mag = mag
 		self.text = text
 		self.pos = pos
@@ -15,6 +15,7 @@ class Button():
 		self.shift = (0,0)
 		self.fontsize = size
 		self.link = link
+		self.pivot = pivot
 		self.render()
 		self.Mag.scene.buttons.append(self)
 		self.Mag.scene.add(self)
@@ -23,7 +24,10 @@ class Button():
 		font = pygame.font.Font(self.fontname, self.fontsize)
 		self.rendered_text = font.render("  {text}  ".format(text=self.text), True, Color(self.color))
 		self.rect = self.rendered_text.get_rect()
-		self.rect.center = self.pos
+		if self.pivot == "left":
+			self.rect.topleft = self.pos
+		if self.pivot == "center":
+			self.rect.midtop = self.pos
 
 	def draw(self):
 		pygame.draw.rect(self.Mag.screen, Color(self.shadow), (self.rect[0]+self.shadow_shift[0], self.rect[1]+self.shadow_shift[1], self.rect[2], self.rect[3]))

@@ -10,7 +10,7 @@ class Text():
 	line_height = 18
 	fontcolor = Color('black')
 	page = 0
-	
+	max_lines = 18
 
 	def __init__(self, mag, text, pos, size=20, color="black", align="left", bold=False, column_limit=70, page=0):
 		self.Mag = mag
@@ -33,7 +33,6 @@ class Text():
 	def render(self):
 		line = 0
 		page = 0
-		max_lines = 20
 		wrapped_text = []
 		
 		for paragraph in self.text.split('\n'):
@@ -52,7 +51,7 @@ class Text():
 
 				rect[1] += self.line_height * line
 				self.rendered_data.append((rendered_text, rect, page))
-				if(line >= max_lines):
+				if(line >= self.max_lines):
 					page += 1
 					line = 0
 				line += 1
