@@ -32,7 +32,7 @@ class Mag:
 		pygame.init()
 		flags = NOFRAME
 		Mag.resolution = resolution
-		Mag.screen = pygame.display.set_mode(resolution, FULLSCREEN|HWSURFACE)
+		Mag.screen = pygame.display.set_mode(resolution)
 		pygame.display.set_caption(caption)
 		Mag.chapter = Chapter(chapters)
 		
