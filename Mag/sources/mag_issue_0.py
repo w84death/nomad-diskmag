@@ -9,7 +9,8 @@
 from mag import *
 
 class MagazineIssue1(Mag):
-	resolution = (480,645)
+	resolution = (704,576)
+	
 	half = (resolution[0]*0.5, resolution[1]*0.5)
 	caption = "Raspberry Pi FDD Diskmag"
 	chapters = ("intro.txt", "why-pi.txt", "python-fun.txt", "test.txt")
@@ -18,24 +19,26 @@ class MagazineIssue1(Mag):
 		super().__init__(resolution=self.resolution, caption=self.caption, chapters=self.chapters)
 		hw = self.half[0]
 		hh = self.half[1]
+		bottom = self.resolution[1] - 24
+		left = 60
+		right = self.resolution[0] - 84
 
 		# COVER
 		Scene(Mag, Text, caption='Cover', title="Raspberry Pi FDD Diskmag", bg="#ccc39d", color="white", align="center")
-		Clipart(Mag, "cover_0", (hw-152/2,340), transparent="#ccc39d")
 		
+		Clipart(Mag, "cover_0", (hw-152/2,340), transparent="#ccc39d")
 
 		Text(Mag, "Issue #0, 04/2021", pos=(hw,45), align="center", size=28, color="#b21cb0")
 		Text(Mag, "by Krzysztof Krystian Jankowski", pos=(hw,80), align="center", color="#888888")
-		Text(Mag, 'Welcome to the magazine! Fresh from the floppy..', pos=(hw,540), align="center", column_limit=24)
 
-		Button(Mag, "Start readeng", (hw,600), "self.go_next_virtual_page()")
+		Button(Mag, "Start reading!", (hw,bottom), "self.go_next_virtual_page()")
 
 		# CHAPTERS / INDEX
 		Scene(Mag, Text, caption='Chapters', title="Chapters", bg="#eeeeee", align="center")
 		Text(Mag, 'Index of the issue', pos=(hw,45), align="center")
 		Clipart(Mag, "floppy", (hw-152/2,400), transparent="#eeeeee", palette=("#1c6cb2", "#3294e5", "#b7cfe5"))
-		Button(Mag, "< Cover", (50,600), "self.change_scene(0)")
-		Button(Mag, "Next page >>", (400,600), "self.go_next_virtual_page()")	
+		Button(Mag, "< Cover", (left,bottom), "self.change_scene(0)")
+		Button(Mag, "Next page >>", (right,bottom), "self.go_next_virtual_page()")	
 		
 
 		index = 2
@@ -47,9 +50,9 @@ class MagazineIssue1(Mag):
 		for chapter in Mag.chapter.collection:
 			filename, title, author, article = chapter
 			Scene(Mag, Text, caption=title, title=title)
-			Text(Mag, author, pos=(0,45))
-			Text(Mag, article, pos=(0,75))
-			Button(Mag, "Next page >>", (400,600), "self.go_next_virtual_page()")
+			Text(Mag, author, pos=(12,45), color="#777777")
+			Text(Mag, article, pos=(12,75))
+			Button(Mag, "Next page >>", (right,bottom), "self.go_next_virtual_page()")
 
 		# OUTRO
 		Scene(Mag, Text, caption="Outro", title="Thanks for reading", bg="black", color="white", align="center")

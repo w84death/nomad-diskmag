@@ -11,7 +11,7 @@ class Text():
 	page = 0
 	
 
-	def __init__(self, mag, text, pos, size=20, color="black", align="left", column_limit=50, page=0):
+	def __init__(self, mag, text, pos, size=20, color="black", align="left", column_limit=70, page=0):
 		self.Mag = mag
 		self.text = text
 		self.page = page

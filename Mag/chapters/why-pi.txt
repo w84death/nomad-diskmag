@@ -2,6 +2,15 @@
 Krzysztof Krystian Jankowski
 Morbi vehicula velit tellus, at rutrum justo facilisis at. Cras iaculis condimentum dolor, a imperdiet justo pellentesque vel. 
 
-Integer semper, odio sit amet varius ultricies, ante erat tempus lectus, in blandit nisi neque eget lorem. Integer quis tellus cursus, gravida mauris id, tincidunt velit. Phasellus gravida efficitur ligula a mollis. 
+Amiga of our times. Simple and cheap single board computer (SBC).
 
-Phasellus ipsum ligula, sodales ut imperdiet in, elementum ac risus. Nunc libero orci, iaculis tempus semper at, aliquam a nunc. Maecenas quis tempor enim. Cras tempus sit amet dui in pellentesque. Donec interdum vestibulum elit. Pellentesque commodo lacus et massa scelerisque dictum.
+Python is already installed and configured
+
+Sonic Pi for music creation!
+
+
+Using many Pis to make life easier. USB hard drive swap.
+
+Pi 4 (OS 1)- develop software
+Pi 2b (OS 2)- test embedded system (easy usb/hdmi access)
+pi zero (OS 2)- deploy embedded system

@@ -20,7 +20,7 @@ class Clipart:
 	
 	def draw_cover_0(self, pos):
 		x = self.pos[0]
-		y = self.pos[1] - 40 + math.sin(time.time()) * 80
+		y = self.pos[1] - 80 + math.sin(time.time()) * 80
 		
 		drive_x = self.pos[0] - 4
 		drive_y = self.pos[1] - 30
