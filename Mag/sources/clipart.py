@@ -28,10 +28,8 @@ class Clipart:
 		btn_x = drive_x + 170
 		btn_y = drive_y
 
-		
-
-		pygame.draw.rect(self.Mag.screen, Color("#dddddd"), (drive_x-28, drive_y+20, 240, 10))
-		pygame.draw.rect(self.Mag.screen, Color("#cccccc"), (drive_x-28, drive_y-20, 240, 40))
+		pygame.draw.rect(self.Mag.screen, Color("#dddddd"), (drive_x-43, drive_y+20, 265, 10))
+		pygame.draw.rect(self.Mag.screen, Color("#cccccc"), (drive_x-43, drive_y-20, 265, 40))
 
 		pygame.draw.rect(self.Mag.screen, Color("#222222"), (drive_x, drive_y, 164, 14))
 		pygame.draw.rect(self.Mag.screen, Color("#eeeeee"), (drive_x, drive_y+12, 164, 2))
@@ -39,8 +37,8 @@ class Clipart:
 		self.draw_floppy((x,y))
 
 		pygame.draw.rect(self.Mag.screen, Color("#222222"), (drive_x, drive_y, 164, 2))
-		pygame.draw.rect(self.Mag.screen, Color("#cccccc"), (drive_x-28, drive_y-20, 240, 20))
-		pygame.draw.rect(self.Mag.screen, Color("#eeeeee"), (drive_x-28, drive_y-170, 240, 150))
+		pygame.draw.rect(self.Mag.screen, Color("#cccccc"), (drive_x-43, drive_y-20, 265, 20))
+		pygame.draw.rect(self.Mag.screen, Color("#eeeeee"), (drive_x-43, drive_y-180, 265, 160))
 		pygame.draw.rect(self.Mag.screen, Color("#222222"), (btn_x, btn_y, 20, 12))
 
 	def draw_floppy(self, pos):

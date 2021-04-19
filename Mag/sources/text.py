@@ -4,14 +4,15 @@ from itertools import chain
 import textwrap
 
 class Text():
-	fontname = pygame.font.match_font("Liberation Sans")
+	fontname = "assets/LiberationSans-Regular.ttf"
+	fontboldname = "assets/LiberationSans-Bold.ttf"
 	fontsize = 20
 	line_height = 18
 	fontcolor = Color('black')
 	page = 0
 	
 
-	def __init__(self, mag, text, pos, size=20, color="black", align="left", column_limit=70, page=0):
+	def __init__(self, mag, text, pos, size=20, color="black", align="left", bold=False, column_limit=70, page=0):
 		self.Mag = mag
 		self.text = text
 		self.page = page
@@ -21,7 +22,10 @@ class Text():
 		self.fontcolor = Color(color)
 		self.column_limit = column_limit
 		self.rendered_data = []
-		self.font = pygame.font.Font(self.fontname, self.fontsize)
+		if bold:
+			self.font = pygame.font.Font(self.fontboldname, self.fontsize)
+		else:
+			self.font = pygame.font.Font(self.fontname, self.fontsize)
 		self.render()
 		self.Mag.scene.add(self)
 		self.Mag.scene.paginator = self        

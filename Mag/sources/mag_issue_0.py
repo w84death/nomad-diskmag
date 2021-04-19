@@ -9,7 +9,7 @@
 from mag import *
 
 class MagazineIssue1(Mag):
-	resolution = (704,576)
+	resolution = (640,480)
 	
 	half = (resolution[0]*0.5, resolution[1]*0.5)
 	caption = "Raspberry Pi FDD Diskmag"
@@ -24,12 +24,14 @@ class MagazineIssue1(Mag):
 		right = self.resolution[0] - 84
 
 		# COVER
-		Scene(Mag, Text, caption='Cover', title="Raspberry Pi FDD Diskmag", bg="#ccc39d", color="white", align="center")
+		Scene(Mag, Text, caption='Cover', notitle=True, bg="#ccc39d", color="white")
+		Text(Mag, "by Krzysztof Krystian Jankowski", pos=(hw,260), align="center", color="#888888")
 		
-		Clipart(Mag, "cover_0", (hw-152/2,340), transparent="#ccc39d")
+		Clipart(Mag, "cover_0", (hw-152/2,250), transparent="#ccc39d")
+		Text(Mag, "Raspberry", pos=(hw,55), size=60, color="#222222", align="center", bold=True)
+		Text(Mag, "Diskmag", pos=(hw,110), size=60, color="#222222", align="center", bold=True)
 
-		Text(Mag, "Issue #0, 04/2021", pos=(hw,45), align="center", size=28, color="#b21cb0")
-		Text(Mag, "by Krzysztof Krystian Jankowski", pos=(hw,80), align="center", color="#888888")
+		Text(Mag, "Issue #0, 04/2021", pos=(hw,160), align="center", size=28, color="#b21cb0")
 
 		Button(Mag, "Start reading!", (hw,bottom), "self.go_next_virtual_page()")
 

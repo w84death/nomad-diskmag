@@ -36,7 +36,6 @@ class Mag:
 		pygame.display.set_caption(caption)
 		Mag.chapter = Chapter(chapters)
 		
-
 	def do_shortcut(self, event):
 		k = event.key
 		m = event.mod 
