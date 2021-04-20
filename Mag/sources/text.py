@@ -4,15 +4,15 @@ from itertools import chain
 import textwrap
 
 class Text():
-	fontname = "assets/LiberationSans-Regular.ttf"
-	fontboldname = "assets/LiberationSans-Bold.ttf"
-	fontsize = 20
+	fontname = "assets/CascadiaCode-Light.ttf"
+	fontboldname = "assets/CascadiaCode-Bold.ttf"
+	fontsize = 18
 	line_height = 18
 	fontcolor = Color('black')
 	page = 0
 	max_lines = 18
 
-	def __init__(self, mag, text, pos, size=20, color="black", align="left", bold=False, column_limit=70, page=0):
+	def __init__(self, mag, text, pos, size=18, color="black", align="left", bold=False, column_limit=55, page=0):
 		self.Mag = mag
 		self.text = text
 		self.page = page
@@ -28,22 +28,22 @@ class Text():
 			self.font = pygame.font.Font(self.fontname, self.fontsize)
 		self.render()
 		self.Mag.scene.add(self)
-		self.Mag.scene.paginator = self        
+		self.Mag.scene.paginator = self
 
 	def render(self):
 		line = 0
 		page = 0
 		wrapped_text = []
-		
+
 		for paragraph in self.text.split('\n'):
 			wrapped_text.append(textwrap.fill(paragraph, self.column_limit))
-		
+
 
 		for part in wrapped_text:
 			for line_of_text in part.split('\n'):
 				rendered_text = self.font.render(line_of_text, True, self.fontcolor)
 				rect = rendered_text.get_rect()
-				
+
 				if self.align == "left":
 					rect.topleft = self.pos
 				if self.align == "center":

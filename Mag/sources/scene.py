@@ -20,7 +20,7 @@ class Scene:
 			aligned_pos = (12,12)
 			if align == "center":
 				aligned_pos = (self.Mag.resolution[0] * 0.5, 12)
-			self.add(self.Text(self.Mag, title, size=32, pos=aligned_pos, align=align, bold=True, color=color, column_limit=40))
+			self.add(self.Text(self.Mag, title, size=32, pos=aligned_pos, align=align, bold=True, color=color, column_limit=35))
 
 	def draw(self):
 		self.Mag.screen.fill(self.bg)
@@ -30,7 +30,7 @@ class Scene:
 
 	def add(self, element):
 		self.nodes.append(element)
-	
+
 	def __str__(self):
 		return 'Scene {}'.format(self.id)
 
