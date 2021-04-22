@@ -47,6 +47,7 @@ class Mag:
 
 	def change_scene(self, scene_id):
 		self.scene = self.scenes[scene_id]
+		self.current_scene = scene_id
 		pygame.display.set_caption(self.scene.caption)  
 
 	def change_page(self):

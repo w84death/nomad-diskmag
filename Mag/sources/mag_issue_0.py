@@ -13,7 +13,7 @@ class MagazineIssue1(Mag):
 	resolution = (640,480)
 
 	half = (resolution[0]*0.5, resolution[1]*0.5)
-	caption = "Raspberry Pi FDD Diskmag"
+	caption = "Nomad Diskmag"
 	chapters = ("intro.txt", "why-pi.txt", "python-fun.txt", "test.txt")
 
 	def __init__(self):
@@ -29,7 +29,7 @@ class MagazineIssue1(Mag):
 		Text(Mag, "by Krzysztof Krystian Jankowski", pos=(hw,260), size=14, align="center", color="#888888")
 
 		Clipart(Mag, "cover_0", (hw-152/2,250), transparent="#ccc39d")
-		Text(Mag, "RASPBERRY", pos=(hw,55), size=36, color="#222222", align="center", bold=True)
+		Text(Mag, "NOMAD", pos=(hw,55), size=36, color="#222222", align="center", bold=True)
 		Text(Mag, "DISKMAG", pos=(hw,90), size=36, color="#222222", align="center", bold=True)
 
 		Text(Mag, "Issue #0, 04/2021", pos=(hw,150), align="center", size=20, color="#b21cb0")
@@ -60,6 +60,7 @@ class MagazineIssue1(Mag):
 		# OUTRO
 		Scene(Mag, Text, caption="Outro", title="Thanks for reading", bg="black", color="white", align="center")
 		Text(Mag, "Do you want to be included in the next issue? Contact me at kj@p1x.in with your article.", pos=(hw,60), align="center", color="white", column_limit=50)
+		Text(Mag, "You can support me at https://liberapay.com/cyfrowynomada/.", pos=(hw, 130), color="#f6c915", align="center", column_limit=50)
 		Clipart(Mag, "floppy", (hw-152/2,hh), transparent="black", palette=("#727272", "#939293", "#c6c6c6"))
 
 		# START FROM 0
