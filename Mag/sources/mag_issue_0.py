@@ -38,7 +38,7 @@ class MagazineIssue1(Mag):
 
 		# CHAPTERS / INDEX
 		Scene(Mag, Text, caption='Chapters', title="Chapters", bg="#eeeeee", align="center")
-		Text(Mag, 'Index of the issue', pos=(hw,45), align="center")
+		Text(Mag, 'Index of the issue', pos=(hw,55), align="center")
 		Clipart(Mag, "floppy", (hw-152/2,bottom-70), transparent="#eeeeee", palette=("#1c6cb2", "#3294e5", "#b7cfe5"))
 		Button(Mag, "< Cover", (left,bottom), "self.change_scene(0)")
 		Button(Mag, "Next page >>", (right,bottom), "self.go_next_virtual_page()")

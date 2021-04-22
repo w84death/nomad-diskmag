@@ -1,5 +1,5 @@
 # Nomad Diskmag
-![Floppy](screens/fdd.gif)
+![Floppy](screens/diskmag.gif)
 
 E-zine on a 1.44 floppy tailored made on Raspberry Pi computer. 
 
@@ -10,5 +10,6 @@ E-zine on a 1.44 floppy tailored made on Raspberry Pi computer.
 - (optional) 1.44MB FDD and a floppy drive
 
 ## Running
+
 - ```cd Mag```
 - ```./run.sh```
