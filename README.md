@@ -9,6 +9,8 @@ E-zine on a 1.44 floppy tailored made on Raspberry Pi computer.
 - pygame
 - (optional) 1.44MB FDD and a floppy drive
 
+![Raspi](screens/raspi-fdd.jpg)
+
 ## Running
 
 - ```cd Mag```
