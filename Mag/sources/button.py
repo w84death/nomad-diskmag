@@ -1,3 +1,12 @@
+#
+# Nomad Diskmag - BUTTONS
+# Rendering buttons.
+#
+# E-zine on a 1.44 floppy tailored made on Raspberry Pi computer.
+# Created by Krzysztof Krystian Jankowski
+# https://krzysztofjankowski.com/nomad-diskmag
+#
+
 import pygame
 from pygame.locals import *
 

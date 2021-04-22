@@ -1,15 +1,17 @@
 #
-# Raspberry Pi FDD Magazine
-# 
-# Magazine on a 1.44 floppy tailored for Raspberry Pi computers. 
-# Created by Krzysztof Krystian Jankowski
-# https://krzysztofjankowski.com/pifddmag
+# Nomad Diskmag - Mag class
+# Main loop and app initiation.
 #
+# E-zine on a 1.44 floppy tailored made on Raspberry Pi computer.
+# Created by Krzysztof Krystian Jankowski
+# https://krzysztofjankowski.com/nomad-diskmag
+#
+
 import pygame
 from pygame.locals import *
 from chapter import Chapter
 from text import Text
-from picture import Picture
+# from picture import Picure # Not used at the moment
 from scene import Scene
 from clipart import Clipart
 from button import Button

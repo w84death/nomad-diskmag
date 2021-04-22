@@ -1,9 +1,10 @@
 #
-# Raspberry Pi FDD Magazine - Issue #1
+# Nomad Diskmag - MAIN FILE
+# Current issue configuration with page layouts.
 #
-# Magazine on a 1.44 floppy tailored for Raspberry Pi computers.
+# E-zine on a 1.44 floppy tailored made on Raspberry Pi computer.
 # Created by Krzysztof Krystian Jankowski
-# https://krzysztofjankowski.com/pifddmag
+# https://krzysztofjankowski.com/nomad-diskmag
 #
 
 from mag import *
