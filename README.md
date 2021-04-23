@@ -3,6 +3,11 @@
 
 E-zine on a 1.44 floppy tailored made on Raspberry Pi computer. 
 
+## Issues
+
+- Issue #0 04/2021 [IN PRODUCTION]
+
+
 ## Requiments
 
 - python3

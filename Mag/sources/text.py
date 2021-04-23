@@ -19,7 +19,8 @@ class Text():
 	line_height = 18
 	fontcolor = Color('black')
 	page = 0
-	max_lines = 18
+	max_lines = 30
+	column_limit = 55
 
 	def __init__(self, mag, text, pos, size=18, color="black", align="left", bold=False, column_limit=55, page=0):
 		self.Mag = mag

@@ -8,9 +8,11 @@
 #
 
 from mag import *
+import math
+VERSION = "0.999"
 
 class MagazineIssue1(Mag):
-	resolution = (640,480)
+	resolution = (1280,720)
 
 	half = (resolution[0]*0.5, resolution[1]*0.5)
 	caption = "Nomad Diskmag"
@@ -26,13 +28,25 @@ class MagazineIssue1(Mag):
 
 		# COVER
 		Scene(Mag, Text, caption='Cover', notitle=True, bg="#ccc39d", color="white")
-		Text(Mag, "by Krzysztof Krystian Jankowski", pos=(hw,260), size=14, align="center", color="#888888")
+		Clipart(Mag, "rainbow", (0,0))
+	
+		logo_tail = 8
+		logo_head = -2
+		for nd in range(logo_head,logo_tail):
+			c = "#fafafa"
+			if(nd == logo_head or nd == logo_tail-1):
+				c = "#222222"
+			temp_y = hw - nd*10
+			Text(Mag, "NOMAD", pos=(temp_y,48-nd*8), size=120, color=c, align="center", bold=True)
+			Text(Mag, "DISKMAG", pos=(temp_y,140-nd*8), size=120, color=c, align="center", bold=True)
+		
 
-		Clipart(Mag, "cover_0", (hw-152/2,250), transparent="#ccc39d")
-		Text(Mag, "NOMAD", pos=(hw,55), size=36, color="#222222", align="center", bold=True)
-		Text(Mag, "DISKMAG", pos=(hw,90), size=36, color="#222222", align="center", bold=True)
+		Text(Mag, "Engine Version: [{v}]".format(v=VERSION), pos=(hw,260), size=14, align="center", color="#888888")
 
-		Text(Mag, "Issue #0, 04/2021", pos=(hw,150), align="center", size=20, color="#b21cb0")
+		Clipart(Mag, "cover_0", (hw-152/2,500), transparent="#ccc39d")
+		
+		Text(Mag, "Issue #0", pos=(hw,320), align="center", size=48, color="#b21cb0")
+		Text(Mag, "04/2021", pos=(hw,360), align="center", size=48, color="#b21cb0")
 
 		Button(Mag, "Start reading!", (hw,bottom), "self.go_next_virtual_page()")
 
@@ -54,6 +68,7 @@ class MagazineIssue1(Mag):
 			Scene(Mag, Text, caption=title, title=title)
 			Text(Mag, author, pos=(12,50), color="#777777")
 			Text(Mag, article, pos=(12,75))
+			Clipart(Mag, "floppy", (hw+152+76,hh), transparent="#eeeeee",)
 			Button(Mag, "Next page >>", (right,bottom), "self.go_next_virtual_page()")
 			Button(Mag, "Index", (hw, bottom), "self.change_scene(1)")
 
