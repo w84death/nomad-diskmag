@@ -30,18 +30,18 @@ class MagazineIssue1(Mag):
 		Scene(Mag, Text, caption='Cover', notitle=True, bg="#ccc39d", color="white")
 		Clipart(Mag, "rainbow", (0,0))
 	
-		logo_tail = 8
-		logo_head = -2
-		for nd in range(logo_head,logo_tail):
+		logo_tail = 64
+		step = 16
+		for nd in range(logo_tail):
 			c = "#fafafa"
-			if(nd == logo_head or nd == logo_tail-1):
+			if (nd == logo_tail-1):
 				c = "#222222"
-			temp_y = hw - nd*10
-			Text(Mag, "NOMAD", pos=(temp_y,48-nd*8), size=120, color=c, align="center", bold=True)
-			Text(Mag, "DISKMAG", pos=(temp_y,140-nd*8), size=120, color=c, align="center", bold=True)
+			temp_x = 1280 - nd * step
+			Text(Mag, "NOMAD", pos=(temp_x,bottom-nd*10), size=120, color=c, align="center", bold=True)
+			Text(Mag, "DISKMAG", pos=(temp_x,bottom+100-nd*10), size=120, color=c, align="center", bold=True)
 		
 
-		Text(Mag, "Engine Version: [{v}]".format(v=VERSION), pos=(hw,260), size=14, align="center", color="#888888")
+		Text(Mag, "Engine Version: [{v}]".format(v=VERSION), pos=(hw,4), size=14, align="center", color="#ffffff")
 
 		Clipart(Mag, "cover_0", (hw-152/2,500), transparent="#ccc39d")
 		
@@ -81,6 +81,8 @@ class MagazineIssue1(Mag):
 		# START FROM 0
 		self.change_scene(0)
 		self.start_drawing()
+
+
 
 if __name__ == '__main__':
 	MagazineIssue1().loop()

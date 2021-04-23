@@ -66,7 +66,8 @@ class Clipart:
 	def draw_rainbow(self, pos):
 		x, y = pos
 		y = y - 180 + math.sin(time.time() * 0.5) * 80
-		rows = 8
+		rows = 7
+		pal = [(249, 65, 68),(243, 114, 44),(248, 150, 30),(249, 199, 79),(144, 190, 109),(67, 170, 139),(87, 117, 144)]
 		for i in range(rows):
-			r,g,b = 255-i*10, 192-i*10, 255-i*10
+			r,g,b = pal[i][0],pal[i][1],pal[i][2]
 			pygame.draw.rect(self.Mag.screen, Color(r,g,b), (x, (y+160*i)+math.sin(i*8)*60, 1280, 320))
