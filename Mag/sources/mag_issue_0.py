@@ -30,25 +30,24 @@ class MagazineIssue1(Mag):
 		Scene(Mag, Text, caption='Cover', notitle=True, bg="#ccc39d", color="white")
 		Clipart(Mag, "rainbow", (0,0))
 	
-		logo_tail = 64
+		logo_tail = 42
 		step = 16
 		for nd in range(logo_tail):
 			c = "#fafafa"
 			if (nd == logo_tail-1):
 				c = "#222222"
-			temp_x = 1280 - nd * step
-			Text(Mag, "NOMAD", pos=(temp_x,bottom-nd*10), size=120, color=c, align="center", bold=True)
-			Text(Mag, "DISKMAG", pos=(temp_x,bottom+100-nd*10), size=120, color=c, align="center", bold=True)
+			temp_x = right + 96 - nd * step
+			Text(Mag, "NOMAD", pos=(temp_x, bottom-nd*step), size=120, color=c, align="center", bold=True)
+			Text(Mag, "DISKMAG", pos=(temp_x, bottom+100-nd*step), size=120, color=c, align="center", bold=True)
 		
-
-		Text(Mag, "Engine Version: [{v}]".format(v=VERSION), pos=(hw,4), size=14, align="center", color="#ffffff")
 
 		Clipart(Mag, "cover_0", (hw-152/2,500), transparent="#ccc39d")
 		
-		Text(Mag, "Issue #0", pos=(hw,320), align="center", size=48, color="#b21cb0")
-		Text(Mag, "04/2021", pos=(hw,360), align="center", size=48, color="#b21cb0")
+		Text(Mag, "Issue #0", pos=(left,bottom-96), size=48, color="#ffffff")
+		Text(Mag, "04/2021", pos=(left,bottom-32), size=48, color="#ffffff")
 
-		Button(Mag, "Start reading!", (hw,bottom), "self.go_next_virtual_page()")
+		Text(Mag, "Engine Version: [{v}]".format(v=VERSION), pos=(hw,bottom), size=14, align="center", color="#ffffff")
+		Button(Mag, "Start reading!", (right, bottom), "self.go_next_virtual_page()")
 
 		# CHAPTERS / INDEX
 		Scene(Mag, Text, caption='Chapters', title="Chapters", bg="#eeeeee", align="center")
