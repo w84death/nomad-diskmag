@@ -37,8 +37,8 @@ class MagazineIssue1(Mag):
 			if (nd == logo_tail-1):
 				c = "#222222"
 			temp_x = right + 96 - nd * step
-			Text(Mag, "NOMAD", pos=(temp_x, bottom-nd*step), size=120, color=c, align="center", bold=True)
-			Text(Mag, "DISKMAG", pos=(temp_x, bottom+100-nd*step), size=120, color=c, align="center", bold=True)
+			Text(Mag, "./N0MAD", pos=(temp_x, bottom-nd*step), size=128, color=c, align="center", bold=True)
+			Text(Mag, "DISKMAG", pos=(temp_x, bottom+100-nd*step), size=128, color=c, align="center", bold=True)
 		
 
 		Clipart(Mag, "cover_0", (hw-152/2,500), transparent="#ccc39d")
