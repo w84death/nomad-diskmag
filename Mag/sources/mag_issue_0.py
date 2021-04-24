@@ -27,7 +27,7 @@ class MagazineIssue1(Mag):
 		right = self.resolution[0] - 84
 
 		# COVER
-		Scene(Mag, Text, caption='Cover', notitle=True, bg="#ccc39d", color="white")
+		Scene(Mag, Text, caption='Cover', notitle=True, bg="#ccc39d", color="white", cursor=["#222222","#ee4444", "#ffeecc"])
 		Clipart(Mag, "rainbow", (0,0))
 	
 		logo_tail = 42
@@ -50,7 +50,7 @@ class MagazineIssue1(Mag):
 		Button(Mag, "Start reading!", (right, bottom), "self.go_next_virtual_page()")
 
 		# CHAPTERS / INDEX
-		Scene(Mag, Text, caption='Chapters', title="Chapters", bg="#eeeeee", align="center")
+		Scene(Mag, Text, caption='Chapters', title="Chapters", bg="#eeeeee", align="center", cursor=["#000000","#444499","#9999ff"])
 		Text(Mag, 'Index of the issue', pos=(hw,55), align="center")
 		Clipart(Mag, "floppy", (hw-152/2,bottom-70), transparent="#eeeeee", palette=("#1c6cb2", "#3294e5", "#b7cfe5"))
 		Button(Mag, "< Cover", (left,bottom), "self.change_scene(0)")

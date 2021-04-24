@@ -15,6 +15,7 @@ from text import Text
 from scene import Scene
 from clipart import Clipart
 from button import Button
+from cursor import Cursor
 
 class Mag:
 	resolution = (0,0)
@@ -32,11 +33,14 @@ class Mag:
 
 	def __init__(self, resolution, caption, chapters):
 		pygame.init()
-		flags = NOFRAME
+		pygame.mouse.set_visible(False)
+		flags = FULLSCREEN | HWSURFACE | DOUBLEBUF
 		Mag.resolution = resolution
-		Mag.screen = pygame.display.set_mode(resolution, FULLSCREEN | HWSURFACE | DOUBLEBUF)
+		Mag.screen = pygame.display.set_mode(resolution, flags) #, flags)
 		pygame.display.set_caption(caption)
 		Mag.chapter = Chapter(chapters)
+		Mag.cursor = Cursor(self.screen, (100,50))
+		
 		
 	def do_shortcut(self, event):
 		k = event.key
@@ -48,6 +52,7 @@ class Mag:
 	def change_scene(self, scene_id):
 		self.scene = self.scenes[scene_id]
 		self.current_scene = scene_id
+		self.scene.update()
 		pygame.display.set_caption(self.scene.caption)  
 
 	def change_page(self):
@@ -75,10 +80,14 @@ class Mag:
 				if event.type == QUIT:
 					self.running = False
 				if event.type == KEYDOWN:
-					self.do_shortcut(event) 
+					self.do_shortcut(event) 	
+				
+				self.cursor.update(event)
+
 				for button in self.scene.buttons:
 					if button.click(event):
 						exec(button.link)
+						
 			if self.drawing:
 				self.scene.draw()
 		pygame.quit()

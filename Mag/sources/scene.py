@@ -14,7 +14,7 @@ class Scene:
 	id = 0
 	bg = Color('white')
 
-	def __init__(self, mag, text, caption="Window Caption", title="Scene Title", notitle=False, bg="white", color="black", align="left"):
+	def __init__(self, mag, text, caption="Window Caption", title="Scene Title", notitle=False, bg="white", color="black", align="left", cursor=["#222222","#ffaacc","#eeeeee"]):
 		self.Mag = mag
 		self.Text = text
 		self.Mag.scenes.append(self)
@@ -24,6 +24,7 @@ class Scene:
 		self.nodes = []
 		self.buttons = []
 		self.bg = Color(bg)
+		self.cursor_palette = cursor
 		self.caption = caption
 		if notitle == False:
 			aligned_pos = (12,12)
@@ -35,6 +36,7 @@ class Scene:
 		self.Mag.screen.fill(self.bg)
 		for node in self.nodes:
 			node.draw()
+		self.Mag.cursor.draw()
 		pygame.display.flip()
 
 	def add(self, element):
@@ -43,5 +45,5 @@ class Scene:
 	def __str__(self):
 		return 'Scene {}'.format(self.id)
 
-	def show(self):
-		self.Mag.scene = self
+	def update(self):
+		self.Mag.cursor.update_palette(self.cursor_palette)
