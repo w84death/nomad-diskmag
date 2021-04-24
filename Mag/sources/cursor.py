@@ -39,12 +39,8 @@ class Cursor:
 		for l in range(len(self.palette)):
 			xx = int(x - l*self.step+self.step)
 			yy = int(y - l*self.step+self.step)
-			pygame.draw.rect(s, Color(p[l]), (xx-4, yy, 8, 8))
-			pygame.draw.rect(s, Color(p[l]), (xx-4, yy+8, 24, 16))
-			pygame.draw.circle(s, Color(p[l]), (xx+8, yy+20), 12)
-			pygame.draw.circle(s, Color(p[l]), (xx, yy), 4)
-			pygame.draw.circle(s, Color(p[l]), (xx+8, yy+8), 4)
-			pygame.draw.circle(s, Color(p[l]), (xx+14, yy+8), 4)
+			pygame.draw.polygon(s, Color(p[l]), [(xx, yy),(xx+12, yy+24),(xx+2,yy+20),(xx-8,yy+28)])
+
 		
 	def move(self, axis_x, axis_y):
 		min_x = 12
