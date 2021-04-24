@@ -53,7 +53,10 @@ class Cursor:
 		max_y = 720-12
 		x, y = self.pos
 		if abs(axis_x) > self.deadzone:
-			x += axis_x * self.speed 
+			if axis_y < 0:
+				x += (axis_x + self.deadzone) * self.speed 
+			else:
+				x += (axis_x - self.deadzone) * self.speed 
 		if abs(axis_y) > self.deadzone:
 			y += axis_y * self.speed
 

@@ -33,7 +33,8 @@ class Mag:
 
 	def __init__(self, resolution, caption, chapters):
 		pygame.init()
-		
+		Mag.clock = pygame.time.Clock()
+
 		pygame.mouse.set_visible(False)
 		flags = FULLSCREEN | HWSURFACE | DOUBLEBUF
 		Mag.resolution = resolution
@@ -98,6 +99,7 @@ class Mag:
 						
 			if self.drawing:
 				self.scene.draw()
+			self.clock.tick(24)
 
 		pygame.quit()
 
