@@ -44,15 +44,28 @@ class Button():
 		self.Mag.screen.blit(self.rendered_text, (self.rect[0]+self.shift[0], self.rect[1]+self.shift[1], self.rect[2], self.rect[3]))
 		
 	def click(self, event):
-		x, y = pygame.mouse.get_pos()
-		if event.type == pygame.MOUSEBUTTONDOWN:
-			if pygame.mouse.get_pressed()[0]:
-				if self.rect.collidepoint(x, y):
-					self.shift = (2,2)
-					return False
+		
+		if event.type == MOUSEBUTTONDOWN:
+			x, y = pygame.mouse.get_pos()
+			if self.rect.collidepoint(x, y):
+				self.shift = (2,2)
+				return False
 
-		if event.type == pygame.MOUSEBUTTONUP:
+		if event.type == JOYBUTTONDOWN:
+			x, y = self.Mag.cursor.get_pos()
+			if self.rect.collidepoint(x, y):
+				self.shift = (2,2)
+				return False
+
+		if event.type == MOUSEBUTTONUP:
+			x, y = pygame.mouse.get_pos()
 			if self.rect.collidepoint(x, y):
 				return True
+				
+		if event.type == JOYBUTTONUP:
+			x, y = self.Mag.cursor.get_pos()
+			if self.rect.collidepoint(x, y):
+				return True
+		
 		self.shift = (0,0)	
 		return False

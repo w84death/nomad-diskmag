@@ -33,6 +33,7 @@ class Mag:
 
 	def __init__(self, resolution, caption, chapters):
 		pygame.init()
+		
 		pygame.mouse.set_visible(False)
 		flags = FULLSCREEN | HWSURFACE | DOUBLEBUF
 		Mag.resolution = resolution
@@ -40,8 +41,12 @@ class Mag:
 		pygame.display.set_caption(caption)
 		Mag.chapter = Chapter(chapters)
 		Mag.cursor = Cursor(self.screen, (100,50))
+		pygame.joystick.init()
+		if pygame.joystick.get_count() > 0:
+			Mag.joystick = pygame.joystick.Joystick(0)
+			Mag.joystick.init()
 		
-		
+
 	def do_shortcut(self, event):
 		k = event.key
 		m = event.mod 
@@ -76,6 +81,9 @@ class Mag:
 		
 	def loop(self):
 		while self.running:
+			if pygame.joystick.get_count() > 0:
+				self.cursor.move(self.joystick.get_axis(0), self.joystick.get_axis(1))
+
 			for event in pygame.event.get():
 				if event.type == QUIT:
 					self.running = False
@@ -90,6 +98,7 @@ class Mag:
 						
 			if self.drawing:
 				self.scene.draw()
+
 		pygame.quit()
 
 if __name__ == '__main__':
