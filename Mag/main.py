@@ -16,21 +16,19 @@ from sources.button import Button
 
 import math
 VERSION = "0.999"
+RESOLUTION = (1280, 720)
 
 class MagazineIssue1(Mag):
-	resolution = (1280,720)
-
-	half = (resolution[0]*0.5, resolution[1]*0.5)
+	half = (RESOLUTION[0]*0.5, RESOLUTION[1]*0.5)
 	caption = "Nomad Diskmag"
 	chapters = ("intro.txt", "why-pi.txt", "python-fun.txt", "test.txt")
 
 	def __init__(self):
-		super().__init__(resolution=self.resolution, caption=self.caption, chapters=self.chapters)
-		hw = self.half[0]
-		hh = self.half[1]
-		bottom = self.resolution[1] - 34
+		super().__init__(resolution=self.RESOLUTION, caption=self.caption, chapters=self.chapters)
+		hw,hh  = self.half
+		bottom = self.RESOLUTION[1] - 34
 		left = 60
-		right = self.resolution[0] - 84
+		right = self.RESOLUTION[0] - 84
 
 		# COVER
 		Scene(Mag, Text, caption='Cover', notitle=True, bg="#ccc39d", color="white", cursor=["#222222","#ee4444", "#ffeecc"])
@@ -86,8 +84,6 @@ class MagazineIssue1(Mag):
 		# START FROM 0
 		self.change_scene(0)
 		self.start_drawing()
-
-
 
 if __name__ == '__main__':
 	MagazineIssue1().loop()

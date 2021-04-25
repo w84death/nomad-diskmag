@@ -14,6 +14,7 @@ from sources.cursor import Cursor
 
 class Mag:
 	resolution = (0,0)
+	flags = FULLSCREEN | HWSURFACE | DOUBLEBUF
 	scenes = []
 	current_scene = 0
 	shortcuts = {
@@ -28,20 +29,19 @@ class Mag:
 
 	def __init__(self, resolution, caption, chapters):
 		pygame.init()
-		Mag.clock = pygame.time.Clock()
-
 		pygame.mouse.set_visible(False)
-		flags = FULLSCREEN | HWSURFACE | DOUBLEBUF
-		Mag.resolution = resolution
-		Mag.screen = pygame.display.set_mode(resolution, flags) #, flags)
 		pygame.display.set_caption(caption)
+		
+		Mag.resolution = resolution
+		Mag.screen = pygame.display.set_mode(resolution) #, self.flags)
 		Mag.chapter = Chapter(chapters)
 		Mag.cursor = Cursor(self.screen, (100,50))
-		pygame.joystick.init()
+		Mag.clock = pygame.time.Clock()
+
+		pygame.joystick.init()		
 		if pygame.joystick.get_count() > 0:
 			Mag.joystick = pygame.joystick.Joystick(0)
 			Mag.joystick.init()
-		
 
 	def do_shortcut(self, event):
 		k = event.key
