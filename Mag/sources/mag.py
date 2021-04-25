@@ -31,8 +31,6 @@ class Mag:
 		pygame.init()
 		pygame.mouse.set_visible(False)
 		pygame.display.set_caption(caption)
-		pygame.mixer.music.load("assets/theme.mid")
-		pygame.mixer.music.play()
 
 		Mag.resolution = resolution
 		Mag.screen = pygame.display.set_mode(resolution, self.flags)

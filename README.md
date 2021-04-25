@@ -12,8 +12,10 @@ E-zine on a 1.44 floppy tailored made on Raspberry Pi computer.
 
 - python3
 - pygame
-- fluid-soundfont-gm
 - (optional) 1.44MB FDD and a floppy drive
+
+On Ubunu 20.04 install those:
+```apt install pygame```
 
 ![Raspi](screens/raspi-fdd.jpg)
 
