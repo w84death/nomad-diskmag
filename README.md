@@ -12,6 +12,7 @@ E-zine on a 1.44 floppy tailored made on Raspberry Pi computer.
 
 - python3
 - pygame
+- fluid-soundfont-gm
 - (optional) 1.44MB FDD and a floppy drive
 
 ![Raspi](screens/raspi-fdd.jpg)
@@ -19,4 +20,11 @@ E-zine on a 1.44 floppy tailored made on Raspberry Pi computer.
 ## Running
 
 - ```cd Mag```
-- ```./run.sh```
+- ```python3 main.py```
+
+## Building
+
+```cd Mag```
+```./build.sh```
+
+Binary will be in ```Mag/dist/```

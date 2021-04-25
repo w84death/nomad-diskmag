@@ -31,7 +31,9 @@ class Mag:
 		pygame.init()
 		pygame.mouse.set_visible(False)
 		pygame.display.set_caption(caption)
-		
+		pygame.mixer.music.load("assets/theme.mid")
+		pygame.mixer.music.play()
+
 		Mag.resolution = resolution
 		Mag.screen = pygame.display.set_mode(resolution, self.flags)
 		Mag.chapter = Chapter(chapters)
@@ -93,7 +95,7 @@ class Mag:
 				for button in self.scene.buttons:
 					if button.click(event):
 						exec(button.link)
-						
+
 				if event.type == QUIT:
 					self.running = False
 				if event.type == KEYDOWN:
