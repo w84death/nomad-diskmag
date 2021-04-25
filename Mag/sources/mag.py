@@ -35,7 +35,7 @@ class Mag:
 		Mag.resolution = resolution
 		Mag.screen = pygame.display.set_mode(resolution, self.flags)
 		Mag.chapter = Chapter(chapters)
-		Mag.cursor = Cursor(self.screen, (100,50))
+		Mag.cursor = Cursor(self.screen, (self.resolution[0]*0.5,self.resolution[1]*0.5))
 		Mag.clock = pygame.time.Clock()
 
 		pygame.joystick.init()		
@@ -46,9 +46,18 @@ class Mag:
 	def do_shortcut(self, event):
 		k = event.key
 		m = event.mod 
-		
 		if k in self.shortcuts:
 			exec(self.shortcuts[k])
+
+	def do_joystick_shortcut(self, event):
+		a, left_bumper, right_bumper = self.joystick.get_button(0), self.joystick.get_button(4), self.joystick.get_button(5)
+		if left_bumper:
+			self.change_scene(1)
+		if right_bumper:
+			self.next_scene()
+		if a:
+			self.go_next_virtual_page()
+
 
 	def change_scene(self, scene_id):
 		self.scene = self.scenes[scene_id]
@@ -81,16 +90,20 @@ class Mag:
 				self.cursor.move(self.joystick.get_axis(0), self.joystick.get_axis(1))
 
 			for event in pygame.event.get():
-				if event.type == QUIT:
-					self.running = False
-				if event.type == KEYDOWN:
-					self.do_shortcut(event) 	
-				
-				self.cursor.update(event)
-
 				for button in self.scene.buttons:
 					if button.click(event):
 						exec(button.link)
+						
+				if event.type == QUIT:
+					self.running = False
+				if event.type == KEYDOWN:
+					self.do_shortcut(event) 
+				if event.type == JOYBUTTONDOWN:
+					self.do_joystick_shortcut(event)
+				
+				self.cursor.update(event)
+
+				
 						
 			if self.drawing:
 				self.scene.draw()
