@@ -1,3 +1,5 @@
 Mag/sources/__pycache__
+*/dist/
+*/build/
 .vscode
 *.pyc

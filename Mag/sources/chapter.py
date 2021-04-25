@@ -7,9 +7,9 @@
 # https://krzysztofjankowski.com/nomad-diskmag
 #
 
-import os
+import sys
 class Chapter:
-	directory = "chapters"
+	directory = "/chapters"
 	collection = []
 
 	def __init__(self, chapters):
@@ -24,9 +24,8 @@ class Chapter:
 	def get_data(self, chapter_filename):
 		line_count = 0
 		article = ""
-		with open("{dir}/{filename}".format(dir=self.directory, filename=chapter_filename),
-			encoding="utf8", 
-			mode="r") as file:
+		chapter_path = "{base}/{sub}/{file}".format(base=getattr(sys, '_MEIPASS', '.'), sub=self.directory, file=chapter_filename)
+		with open(chapter_path,encoding="utf8", mode="r") as file:
 			for line in file:
 				if line_count == 0:
 					title = line.rstrip()

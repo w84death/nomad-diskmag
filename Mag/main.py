@@ -15,20 +15,20 @@ from sources.clipart import Clipart
 from sources.button import Button
 
 import math
-VERSION = "0.999"
-RESOLUTION = (1280, 720)
 
 class MagazineIssue1(Mag):
-	half = (RESOLUTION[0]*0.5, RESOLUTION[1]*0.5)
+	engine_version = "0.999"
+	resolution = (1280, 720)
+	half = (resolution[0]*0.5, resolution[1]*0.5)
 	caption = "Nomad Diskmag"
 	chapters = ("intro.txt", "why-pi.txt", "python-fun.txt", "test.txt")
 
 	def __init__(self):
-		super().__init__(resolution=self.RESOLUTION, caption=self.caption, chapters=self.chapters)
+		super().__init__(resolution=self.resolution, caption=self.caption, chapters=self.chapters)
 		hw,hh  = self.half
-		bottom = self.RESOLUTION[1] - 34
+		bottom = self.resolution[1] - 34
 		left = 60
-		right = self.RESOLUTION[0] - 84
+		right = self.resolution[0] - 84
 
 		# COVER
 		Scene(Mag, Text, caption='Cover', notitle=True, bg="#ccc39d", color="white", cursor=["#222222","#ee4444", "#ffeecc"])
@@ -50,7 +50,7 @@ class MagazineIssue1(Mag):
 		Text(Mag, "Issue #0", pos=(left,bottom-96), size=48, color="#ffffff")
 		Text(Mag, "04/2021", pos=(left,bottom-32), size=48, color="#ffffff")
 
-		Text(Mag, "Engine Version: [{v}]".format(v=VERSION), pos=(hw,bottom), size=14, align="center", color="#ffffff")
+		Text(Mag, "Engine Version: [{v}]".format(v=self.engine_version), pos=(hw,bottom), size=14, align="center", color="#ffffff")
 		Button(Mag, "Start reading!", (right, bottom), "self.go_next_virtual_page()")
 
 		# CHAPTERS / INDEX

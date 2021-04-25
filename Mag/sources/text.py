@@ -7,15 +7,17 @@
 # https://krzysztofjankowski.com/nomad-diskmag
 #
 
+import sys
 import pygame
 from pygame.locals import *
 from itertools import chain
 import textwrap
 
 class Text():
-	fontname = "assets/CascadiaCode-Light.ttf"
-	fontboldname = "assets/CascadiaCode-Bold.ttf"
-	fontsize = 18
+	font_directory = "assets"
+	font_normal_filename = "CascadiaCode-Light.ttf"
+	font_bold_filename = "CascadiaCode-Bold.ttf"
+	font_size = 18
 	line_height = 18
 	fontcolor = Color('black')
 	page = 0
@@ -28,14 +30,15 @@ class Text():
 		self.page = page
 		self.pos = pos
 		self.align = align
-		self.fontsize = size
+		self.font_size = size
 		self.fontcolor = Color(color)
 		self.column_limit = column_limit
 		self.rendered_data = []
+		ffile = self.font_normal_filename
 		if bold:
-			self.font = pygame.font.Font(self.fontboldname, self.fontsize)
-		else:
-			self.font = pygame.font.Font(self.fontname, self.fontsize)
+			ffile = self.font_bold_filename
+		font_path = "{base}/{sub}/{file}".format(base=getattr(sys, '_MEIPASS', '.'), sub=self.font_directory, file=ffile)
+		self.font = pygame.font.Font(font_path, self.font_size)
 		self.render()
 		self.Mag.scene.add(self)
 		self.Mag.scene.paginator = self

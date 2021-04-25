@@ -33,7 +33,7 @@ class Mag:
 		pygame.display.set_caption(caption)
 		
 		Mag.resolution = resolution
-		Mag.screen = pygame.display.set_mode(resolution) #, self.flags)
+		Mag.screen = pygame.display.set_mode(resolution, self.flags)
 		Mag.chapter = Chapter(chapters)
 		Mag.cursor = Cursor(self.screen, (100,50))
 		Mag.clock = pygame.time.Clock()
