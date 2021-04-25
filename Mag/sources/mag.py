@@ -9,13 +9,8 @@
 
 import pygame
 from pygame.locals import *
-from chapter import Chapter
-from text import Text
-# from picture import Picure # Not used at the moment
-from scene import Scene
-from clipart import Clipart
-from button import Button
-from cursor import Cursor
+from sources.chapter import Chapter
+from sources.cursor import Cursor
 
 class Mag:
 	resolution = (0,0)

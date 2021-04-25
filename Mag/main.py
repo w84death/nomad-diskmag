@@ -7,7 +7,13 @@
 # https://krzysztofjankowski.com/nomad-diskmag
 #
 
-from mag import *
+from sources.mag import Mag
+from sources.chapter import Chapter
+from sources.text import Text
+from sources.scene import Scene
+from sources.clipart import Clipart
+from sources.button import Button
+
 import math
 VERSION = "0.999"
 
