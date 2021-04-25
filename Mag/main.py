@@ -19,13 +19,12 @@ import math
 class MagazineIssue1(Mag):
 	engine_version = "0.999"
 	resolution = (1280, 720)
-	half = (resolution[0]*0.5, resolution[1]*0.5)
 	caption = "Nomad Diskmag"
 	chapters = ("intro.txt", "why-pi.txt", "python-fun.txt", "test.txt")
 
 	def __init__(self):
 		super().__init__(resolution=self.resolution, caption=self.caption, chapters=self.chapters)
-		hw,hh  = self.half
+		hw, hh  = (self.resolution[0]*0.5, self.resolution[1]*0.5)
 		bottom = self.resolution[1] - 34
 		left = 60
 		right = self.resolution[0] - 84
