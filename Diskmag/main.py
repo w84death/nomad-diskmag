@@ -16,7 +16,7 @@ from sources.button import Button
 
 import math
 
-class MagazineIssue1(Mag):
+class MagazineIssue0(Mag):
 	engine_version = "0.999"
 	resolution = (1280, 720)
 	caption = "Nomad Diskmag"
@@ -25,9 +25,9 @@ class MagazineIssue1(Mag):
 	def __init__(self):
 		super().__init__(resolution=self.resolution, caption=self.caption, chapters=self.chapters)
 		hw, hh  = (self.resolution[0]*0.5, self.resolution[1]*0.5)
-		bottom = self.resolution[1] - 34
-		left = 60
-		right = self.resolution[0] - 84
+		bottom = self.resolution[1] - 40
+		left = 70
+		right = self.resolution[0] - 86
 
 		# COVER
 		Scene(Mag, Text, caption='Cover', notitle=True, bg="#ccc39d", color="white", cursor=["#222222","#ee4444", "#ffeecc"])
@@ -50,7 +50,7 @@ class MagazineIssue1(Mag):
 		Text(Mag, "04/2021", pos=(left,bottom-32), size=48, color="#ffffff")
 
 		Text(Mag, "Engine Version: [{v}]".format(v=self.engine_version), pos=(hw,bottom), size=14, align="center", color="#ffffff")
-		Button(Mag, "Start reading!", (right, bottom), "self.go_next_virtual_page()")
+		Button(Mag, "Start reading!", (hw, hh), "self.go_next_virtual_page()")
 
 		# CHAPTERS / INDEX
 		Scene(Mag, Text, caption='Chapters', title="Chapters", bg="#eeeeee", align="center", cursor=["#000000","#444499","#9999ff"])
@@ -61,7 +61,7 @@ class MagazineIssue1(Mag):
 
 		index = 2
 		for chapter in Mag.chapter.collection:
-			Button(Mag, chapter[1], (hw*0.5, 45 + (30*index)), "self.change_scene({scene})".format(scene=index), pivot="left")
+			Button(Mag, chapter[1], (hw*0.5, 45 + (50*index)), "self.change_scene({scene})".format(scene=index), pivot="left")
 			index += 1
 
 		# INDIVIDUAL CHAPTERS
@@ -80,9 +80,11 @@ class MagazineIssue1(Mag):
 		Text(Mag, "You can support me at https://liberapay.com/cyfrowynomada/.", pos=(hw, 130), color="#f6c915", align="center", column_limit=50)
 		Clipart(Mag, "floppy", (hw-152/2,hh), transparent="black", palette=("#727272", "#939293", "#c6c6c6"))
 
+		Button(Mag, "Close Diskmag", (hw, bottom), "self.quit()")
+
 		# START FROM 0
 		self.change_scene(0)
 		self.start_drawing()
 
 if __name__ == '__main__':
-	MagazineIssue1().loop()
+	MagazineIssue0().loop()

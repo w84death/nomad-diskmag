@@ -20,9 +20,10 @@ class Button():
 		self.color = color
 		self.bg = bg
 		self.shadow = shadow
-		self.shadow_shift  = (2,2)
+		self.shadow_shift  = (2,4)
 		self.shift = (0,0)
 		self.fontsize = size
+		self.padding = 6
 		self.link = link
 		self.pivot = pivot
 		self.render()
@@ -39,8 +40,18 @@ class Button():
 			self.rect.midtop = self.pos
 
 	def draw(self):
-		pygame.draw.rect(self.Mag.screen, Color(self.shadow), (self.rect[0]+self.shadow_shift[0], self.rect[1]+self.shadow_shift[1], self.rect[2], self.rect[3]))
-		pygame.draw.rect(self.Mag.screen, Color(self.bg), (self.rect[0]+self.shift[0], self.rect[1]+self.shift[1], self.rect[2], self.rect[3]))
+		pygame.draw.rect(self.Mag.screen, 
+			Color(self.shadow), 
+			(self.rect[0]+self.shadow_shift[0] - self.padding, 
+			self.rect[1]+self.shadow_shift[1] - self.padding, 
+			self.rect[2] + self.padding*2, 
+			self.rect[3] + self.padding*2))
+		pygame.draw.rect(self.Mag.screen, 
+			Color(self.bg), 
+			(self.rect[0]+self.shift[0] - self.padding,
+			self.rect[1]+self.shift[1] - self.padding,
+			self.rect[2] + self.padding*2,
+			self.rect[3] + self.padding*2))
 		self.Mag.screen.blit(self.rendered_text, (self.rect[0]+self.shift[0], self.rect[1]+self.shift[1], self.rect[2], self.rect[3]))
 		
 	def click(self, event):

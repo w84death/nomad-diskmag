@@ -21,12 +21,12 @@ On Ubunu 20.04 install those:
 
 ## Running
 
-- ```cd Mag```
+- ```cd Diskmag```
 - ```python3 main.py```
 
 ## Building
 
-```cd Mag```
+```cd Diskag```
 ```./build.sh```
 
 Binary will be in ```Mag/dist/```
