@@ -9,7 +9,7 @@
 
 import sys
 class Chapter:
-	directory = "/chapters"
+	directory = "chapters"
 	collection = []
 
 	def __init__(self, chapters):
