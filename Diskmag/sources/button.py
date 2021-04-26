@@ -7,11 +7,14 @@
 # https://krzysztofjankowski.com/nomad-diskmag
 #
 
+import sys
 import pygame
 from pygame.locals import *
 
 class Button():
-	fontname = pygame.font.match_font("Liberation Sans")
+	font_directory = "assets"
+	font_bold_filename = "CascadiaCode-Bold.ttf"
+	font_size = 18
 
 	def __init__(self, mag, text, pos, link, size=20, color="#f8f8f8", bg="#777777", shadow="#222222", pivot="center"):
 		self.Mag = mag
@@ -26,13 +29,14 @@ class Button():
 		self.padding = 6
 		self.link = link
 		self.pivot = pivot
+		font_path = "{base}/{sub}/{file}".format(base=getattr(sys, '_MEIPASS', '.'), sub=self.font_directory, file=self.font_bold_filename)
+		self.font = pygame.font.Font(font_path, self.font_size)
 		self.render()
 		self.Mag.scene.buttons.append(self)
 		self.Mag.scene.add(self)
 
 	def render(self):
-		font = pygame.font.Font(self.fontname, self.fontsize)
-		self.rendered_text = font.render("  {text}  ".format(text=self.text), True, Color(self.color))
+		self.rendered_text = self.font.render("  {text}  ".format(text=self.text), True, Color(self.color))
 		self.rect = self.rendered_text.get_rect()
 		if self.pivot == "left":
 			self.rect.topleft = self.pos

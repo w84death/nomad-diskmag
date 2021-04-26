@@ -1,4 +1,5 @@
 1. Introduction to the Diskmag
+Krzysztof Krystian Jankowski
 As a hacker, I like to challenge myself for learning new things. I also like to write about the stuff I do. Combining those two I came up with a diskmag - digital magazine. In the days of glory, those zines were distributed on tapes and discettes. To keep this project in the mood I also want to share the sources on the real floppy.
 
 Where diskmag exceeds is in the interactivity and animations. I can add buttons, index, and customize each article down to the color of the cursor. Instead of images, I'm creating clipart-like graphics from primitives by code.
