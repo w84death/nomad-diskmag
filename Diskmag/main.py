@@ -80,7 +80,7 @@ class MagazineIssue0(Mag):
 
 		# OUTRO
 		Scene(Mag, Text, caption="Outro", title="Thanks for reading", bg="black", color="white", align="center")
-		Text(Mag, "Do you want to be included in the next issue? Contact me at kj@p1x.in with your article.", pos=(hw,60), align="center", color="white", column_limit=50)
+		Text(Mag, "Do you want to be included in the next issue? Contact me at kj@p1x.in with your article.", pos=(hw,70), align="center", color="white", column_limit=50)
 		Text(Mag, "You can support me at https://liberapay.com/cyfrowynomada/.", pos=(hw, 130), color="#f6c915", align="center", column_limit=50)
 		Clipart(Mag, "floppy", (hw-152/2,hh), transparent="black", palette=("#727272", "#939293", "#c6c6c6"))
 
