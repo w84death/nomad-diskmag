@@ -1,19 +1,18 @@
 2. Why Raspberry Pi?
 Krzysztof Krystian Jankowski
-Morbi vehicula velit tellus, at rutrum justo facilisis at. Cras iaculis condimentum dolor, a imperdiet justo pellentesque vel. 
+The moment I saw a printed magazine with a free computer included on the cover I knew the future is now.
+Raspberry Pi is the Amiga of our times. But smaller, way faster,  and super cheap. Since the first Pi single-board computer (SBC) idea become mainstream. Thanks to the work of the Raspberry Pi Foundation the whole ecosystem is constantly updated and new features added.
 
-Amiga of our times. Simple and cheap single board computer (SBC).
+Starting from the board itself. You can touch it whatever you want and it will not break from static. ANd what you would ever want to touch it? Kids. It is a perfect first computer for a young will-be-programmer. 
+Pi board is small but you can clearly see what components are for. Where is the main CPU and where wifi chip. You can learn a lot just by looking, touching and asking about each and every part of this little computer.
 
-OS and VSCode (zen mode)
+Hardware is slow compared to a modern PC. But it's fast enough to write programs on it. And to do this you need a software stack. Raspberry Pi OS has all of this already set up for us. There is the tone of documentation, books, magazines, and even sets of example projects to follow.
 
-Python is already installed and configured
+Recently Pi gets the official Visual Studio Code. And with a single line `sudo apt install python3-pygame` I have everything I need to write good, accelerated python applications. And with pyinstaller I can compress my new app to a single file. Easy to share with friends.
 
-Sonic Pi for music creation!
+That covers code. What about sound? Sonic Pi. This is the easiest and most fun way for creating music for a programmer.
 
-Using many Pis to make life easier. USB hard drive swap.
+Maintaining and experimenting on Raspberry Pi is super easy. The whole system sits on an sd card. If I break the system I just bake a new sd card and start over. If I want to test some new OS I can use a separate card and just swap for a moment. And the best part is that this card will work on any Pi. From zero to 4.
+Thanks to this I can test and set up a particular project on a Pi3 with 4 USB ports, Ethernet, and HDMI out. Then when I'm done I just move the card to a Pi Zero. The only USB it has I use for a gamepad. Easy deployment for a gum-sized computer.
 
-Pi 4 (OS 1)- develop software
-Pi 2b (OS 2)- test embedded system (easy usb/hdmi access)
-pi zero (OS 2)- deploy embedded system
-
-Just fun
+At the end of the day, it is just fun to use.
