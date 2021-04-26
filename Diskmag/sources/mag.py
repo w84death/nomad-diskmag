@@ -14,7 +14,7 @@ from sources.cursor import Cursor
 
 class Mag:
 	resolution = (0,0)
-	flags = FULLSCREEN | HWSURFACE | DOUBLEBUF
+	flags = DOUBLEBUF #FULLSCREEN | HWSURFACE | DOUBLEBUF
 	scenes = []
 	current_scene = 0
 	shortcuts = {

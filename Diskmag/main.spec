@@ -5,7 +5,7 @@ block_cipher = None
 
 
 a = Analysis(['main.py'],
-             pathex=['/home/pi/Code/nomad-diskmag/Mag'],
+             pathex=['/home/pi/Code/nomad-diskmag/Diskmag'],
              binaries=[],
              datas=[('assets', 'assets'), ('chapters', 'chapters')],
              hiddenimports=[],

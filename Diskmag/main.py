@@ -68,8 +68,8 @@ class MagazineIssue0(Mag):
 		for chapter in Mag.chapter.collection:
 			filename, title, author, article = chapter
 			Scene(Mag, Text, caption=title, title=title)
-			Text(Mag, author, pos=(12,50), color="#777777")
-			Text(Mag, article, pos=(12,75))
+			Text(Mag, author, pos=(70,55), color="#777777")
+			Text(Mag, article, pos=(70,100))
 			Clipart(Mag, "floppy", (hw+152+76,hh), transparent="#eeeeee",)
 			Button(Mag, "Next page >>", (right,bottom), "self.go_next_virtual_page()")
 			Button(Mag, "Index", (hw, bottom), "self.change_scene(1)")

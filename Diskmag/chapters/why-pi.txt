@@ -4,13 +4,16 @@ Morbi vehicula velit tellus, at rutrum justo facilisis at. Cras iaculis condimen
 
 Amiga of our times. Simple and cheap single board computer (SBC).
 
+OS and VSCode (zen mode)
+
 Python is already installed and configured
 
 Sonic Pi for music creation!
-
 
 Using many Pis to make life easier. USB hard drive swap.
 
 Pi 4 (OS 1)- develop software
 Pi 2b (OS 2)- test embedded system (easy usb/hdmi access)
 pi zero (OS 2)- deploy embedded system
+
+Just fun
