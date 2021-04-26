@@ -36,12 +36,14 @@ class Button():
 		self.Mag.scene.add(self)
 
 	def render(self):
-		self.rendered_text = self.font.render("  {text}  ".format(text=self.text), True, Color(self.color))
+		self.rendered_text = self.font.render(self.text, True, Color(self.color))
 		self.rect = self.rendered_text.get_rect()
 		if self.pivot == "left":
-			self.rect.topleft = self.pos
+			self.rect.midleft = self.pos
+		if self.pivot == "right":
+			self.rect.midright = self.pos
 		if self.pivot == "center":
-			self.rect.midtop = self.pos
+			self.rect.center = self.pos
 
 	def draw(self):
 		pygame.draw.rect(self.Mag.screen, 

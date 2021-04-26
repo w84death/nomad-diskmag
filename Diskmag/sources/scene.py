@@ -27,9 +27,9 @@ class Scene:
 		self.cursor_palette = cursor
 		self.caption = caption
 		if notitle == False:
-			aligned_pos = (12,12)
+			aligned_pos = (12,32)
 			if align == "center":
-				aligned_pos = (self.Mag.resolution[0] * 0.5, 12)
+				aligned_pos = (self.Mag.resolution[0] * 0.5, 32)
 			self.add(self.Text(self.Mag, title, size=32, pos=aligned_pos, align=align, bold=True, color=color, column_limit=90))
 
 	def draw(self):

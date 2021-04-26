@@ -21,7 +21,7 @@ class Text():
 	line_height = 18
 	fontcolor = Color('black')
 	page = 0
-	max_lines = 30
+	max_lines = 29
 	column_limit = 55
 
 	def __init__(self, mag, text, pos, size=18, color="black", align="left", bold=False, column_limit=55, page=0):
@@ -58,7 +58,9 @@ class Text():
 				rect = rendered_text.get_rect()
 
 				if self.align == "left":
-					rect.topleft = self.pos
+					rect.midleft = self.pos
+				if self.align == "right":
+					rect.midright = self.pos
 				if self.align == "center":
 					rect.midtop = self.pos
 

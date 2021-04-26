@@ -27,7 +27,7 @@ class MagazineIssue0(Mag):
 		hw, hh  = (self.resolution[0]*0.5, self.resolution[1]*0.5)
 		bottom = self.resolution[1] - 40
 		left = 70
-		right = self.resolution[0] - 86
+		right = self.resolution[0] - 70
 
 		# COVER
 		Scene(Mag, Text, caption='Cover', notitle=True, bg="#ccc39d", color="white", cursor=["#222222","#ee4444", "#ffeecc"])
@@ -50,29 +50,33 @@ class MagazineIssue0(Mag):
 		Text(Mag, "04/2021", pos=(left,bottom-32), size=48, color="#ffffff")
 
 		Text(Mag, "Engine Version: [{v}]".format(v=self.engine_version), pos=(hw,bottom), size=14, align="center", color="#ffffff")
-		Button(Mag, "Start reading!", (hw, hh), "self.go_next_virtual_page()")
+		Button(Mag, "Run Diskmag!", (hw, hh), "self.go_next_virtual_page()")
 
 		# CHAPTERS / INDEX
 		Scene(Mag, Text, caption='Chapters', title="Chapters", bg="#eeeeee", align="center", cursor=["#000000","#444499","#9999ff"])
 		Text(Mag, 'Index of the issue', pos=(hw,55), align="center")
 		Clipart(Mag, "floppy", (hw-152/2,bottom-70), transparent="#eeeeee", palette=("#1c6cb2", "#3294e5", "#b7cfe5"))
-		Button(Mag, "< Cover", (left,bottom), "self.change_scene(0)")
-		Button(Mag, "Next page >>", (right,bottom), "self.go_next_virtual_page()")
+		Button(Mag, "Cover", (left,bottom), "self.change_scene(0)", pivot="left")
+		Button(Mag, "Start reading", (right,bottom), "self.go_next_virtual_page()", pivot="right")
 
 		index = 2
 		for chapter in Mag.chapter.collection:
 			Button(Mag, chapter[1], (hw*0.5, 45 + (50*index)), "self.change_scene({scene})".format(scene=index), pivot="left")
 			index += 1
 
+		Button(Mag, "Close Diskmag", (hw, bottom-128), "self.quit()")
+
 		# INDIVIDUAL CHAPTERS
 		for chapter in Mag.chapter.collection:
 			filename, title, author, article = chapter
 			Scene(Mag, Text, caption=title, title=title)
-			Text(Mag, author, pos=(70,55), color="#777777")
-			Text(Mag, article, pos=(70,100))
+			Text(Mag, author, pos=(70,60), color="#777777")
+			pages = Text(Mag, article, pos=(70,100)).pages
 			Clipart(Mag, "floppy", (hw+152+76,hh), transparent="#eeeeee",)
-			Button(Mag, "Next page >>", (right,bottom), "self.go_next_virtual_page()")
-			Button(Mag, "Index", (hw, bottom), "self.change_scene(1)")
+			if pages > 0:
+				Button(Mag, "Change page..", (hw,bottom), "self.change_page()", pivot="center")
+			Button(Mag, "Next chapter", (right,bottom), "self.next_scene()", pivot="right")
+			Button(Mag, "Chapters", (left, bottom), "self.change_scene(1)", pivot="left")
 
 		# OUTRO
 		Scene(Mag, Text, caption="Outro", title="Thanks for reading", bg="black", color="white", align="center")
@@ -80,6 +84,7 @@ class MagazineIssue0(Mag):
 		Text(Mag, "You can support me at https://liberapay.com/cyfrowynomada/.", pos=(hw, 130), color="#f6c915", align="center", column_limit=50)
 		Clipart(Mag, "floppy", (hw-152/2,hh), transparent="black", palette=("#727272", "#939293", "#c6c6c6"))
 
+		Button(Mag, "Rewind", (hw, bottom-64), "self.change_scene(0)")
 		Button(Mag, "Close Diskmag", (hw, bottom), "self.quit()")
 
 		# START FROM 0
