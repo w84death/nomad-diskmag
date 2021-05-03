@@ -1,3 +1,16 @@
 3. Pyhton is fun
 Krzysztof Krystian Jankowski
-Nulla a magna tempor, suscipit dolor vitae, mollis dui. Nam vehicula condimentum volutpat. Vestibulum magna tortor, elementum sit amet tincidunt quis, viverra at nisi. Pellentesque auctor elit libero, sed sollicitudin neque gravida tempus. In dui felis, congue eu facilisis vitae, efficitur sed erat. Morbi risus orci, sodales ac orci nec, porta volutpat justo. Proin maximus euismod nulla at volutpat. Aenean at enim quis libero accumsan dapibus. Phasellus sit amet porta nisl, a tincidunt massa.
+As a very young kid I discovered QBASIC. I learned programming using it. Since then I advocated it as the best first language. 
+Over the years I learned also ARM Assembly, C, C++, C#, JavaScript, PHP, Lua and, Python. All of them have strangths and wiknesses but one stands out. Python. Python3 in particular. For me it's all I want from language.
+
+My perfect language shoudl have those features:
+- easy to use
+- clean code
+- OOP
+- easy to package/build
+- cross platform code
+- rich community
+
+And python have all  of those. It's not perfect but nothing is. 
+
+Where fun begins is on Raspberry Pi. Python is the main programming language in Raspberry ecosystem. It's already installed and configured. 

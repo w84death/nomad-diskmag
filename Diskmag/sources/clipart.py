@@ -17,6 +17,7 @@ class Clipart:
 		self.Mag = mag
 		self.clip = clip
 		self.pos = pos
+		self.pal_shift = 0
 		self.transparent = transparent
 		self.palette = palette
 		self.Mag.scene.add(self)
@@ -28,6 +29,10 @@ class Clipart:
 			self.draw_floppy(self.pos, p=self.palette)
 		if self.clip == 'rainbow':
 			self.draw_rainbow(self.pos)
+		if self.clip == 'pi':
+			self.draw_pi(self.pos)
+		if self.clip == 'fake_game':
+			self.draw_fake_game(self.pos)
 	
 	def draw_cover_0(self, pos):
 		x, y = pos
@@ -71,3 +76,22 @@ class Clipart:
 		for i in range(rows):
 			r,g,b = pal[i][0],pal[i][1],pal[i][2]
 			pygame.draw.rect(self.Mag.screen, Color(r,g,b), (x, (y+160*i)+math.sin(i*8)*60, 1280, 320))
+
+	def draw_pi(self, pos):
+		x, y = pos
+		# green pcb, metal, black chip, yellow rings, 
+		pal = [(22,135,92), (159,143,143), (48, 42, 56), (243, 208, 104)]
+		pygame.draw.rect(self.Mag.screen, Color(pal[0]), (x,y,250,200))
+
+
+	def draw_fake_game(self, pos):
+		x, y = pos
+		s = self.Mag.screen
+		pal = [(128,128,128),(192,192,192),(200,255,200)]
+		max_z = 24
+		for z in range(max_z):
+			pygame.draw.rect(s, self.get_shifted_color(0), (x,y-z, 256, 8))
+
+	def get_shifted_color(self, id):
+		# FIXME shiftuj
+		return Color(self.palette[self.pal_shift + id])

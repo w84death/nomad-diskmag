@@ -20,7 +20,7 @@ class MagazineIssue0(Mag):
 	engine_version = "0.999"
 	resolution = (1280, 720)
 	caption = "Nomad Diskmag"
-	chapters = ("intro.txt", "why-pi.txt", "python-fun.txt", "test.txt")
+	chapters = ("intro.txt", "why-pi.txt", "python-fun.txt", "serenity-os.txt")
 
 	def __init__(self):
 		super().__init__(resolution=self.resolution, caption=self.caption, chapters=self.chapters)
@@ -30,7 +30,7 @@ class MagazineIssue0(Mag):
 		right = self.resolution[0] - 70
 
 		# COVER
-		Scene(Mag, Text, caption='Cover', notitle=True, bg="#ccc39d", color="white", cursor=["#222222","#ee4444", "#ffeecc"])
+		Scene(Mag, Text, caption='Cover', notitle=True, bg="#ccc39d", color="white", cursor=["#222222","#ee4444", "#ffeecc"], track="main")
 		Clipart(Mag, "rainbow", (0,0))
 	
 		logo_tail = 42

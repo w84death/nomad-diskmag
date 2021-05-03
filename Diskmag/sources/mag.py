@@ -11,6 +11,7 @@ import pygame
 from pygame.locals import *
 from sources.chapter import Chapter
 from sources.cursor import Cursor
+from sources.midi import Midi
 
 class Mag:
 	resolution = (0,0)
@@ -26,6 +27,7 @@ class Mag:
 	}
 	running = True
 	drawing = False
+	
 
 	def __init__(self, resolution, caption, chapters):
 		pygame.init()
@@ -37,7 +39,7 @@ class Mag:
 		Mag.chapter = Chapter(chapters)
 		Mag.cursor = Cursor(self.screen, (self.resolution[0]*0.5,self.resolution[1]*0.5))
 		Mag.clock = pygame.time.Clock()
-
+		Mag.midi = Midi()
 		pygame.joystick.init()		
 		if pygame.joystick.get_count() > 0:
 			Mag.joystick = pygame.joystick.Joystick(0)
@@ -62,7 +64,7 @@ class Mag:
 	def change_scene(self, scene_id):
 		self.scene = self.scenes[scene_id]
 		self.current_scene = scene_id
-		self.scene.update()
+		self.scene.ready()
 		pygame.display.set_caption(self.scene.caption)  
 
 	def change_page(self):

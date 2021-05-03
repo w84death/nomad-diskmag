@@ -14,7 +14,7 @@ class Scene:
 	id = 0
 	bg = Color('white')
 
-	def __init__(self, mag, text, caption="Window Caption", title="Scene Title", notitle=False, bg="white", color="black", align="left", cursor=["#222222","#ffaacc","#eeeeee"]):
+	def __init__(self, mag, text, caption="Window Caption", title="Scene Title", notitle=False, bg="white", color="black", align="left", cursor=["#222222","#ffaacc","#eeeeee"], track=""):
 		self.Mag = mag
 		self.Text = text
 		self.Mag.scenes.append(self)
@@ -26,11 +26,17 @@ class Scene:
 		self.bg = Color(bg)
 		self.cursor_palette = cursor
 		self.caption = caption
+		self.track = track
 		if notitle == False:
 			aligned_pos = (12,32)
 			if align == "center":
 				aligned_pos = (self.Mag.resolution[0] * 0.5, 32)
 			self.add(self.Text(self.Mag, title, size=32, pos=aligned_pos, align=align, bold=True, color=color, column_limit=90))
+
+	def ready(self):
+		self.Mag.cursor.update_palette(self.cursor_palette)
+		if self.track != "":
+			self.Mag.midi.play_track(self.track)
 
 	def draw(self):
 		self.Mag.screen.fill(self.bg)
@@ -45,5 +51,4 @@ class Scene:
 	def __str__(self):
 		return 'Scene {}'.format(self.id)
 
-	def update(self):
-		self.Mag.cursor.update_palette(self.cursor_palette)
+	
