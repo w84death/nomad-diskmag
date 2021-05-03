@@ -12,11 +12,13 @@ E-zine on a 1.44 floppy tailored made on Raspberry Pi computer.
 
 - python3
 - pygame
+- timidity 
+- freepats
 - (optional) pyinstaller
 - (optional) 1.44MB FDD and a floppy drive
 
 On Ubunu 20.04/Raspbian install those:
-```apt install python3-pygame```
+```apt install python3-pygame timidity freepats```
 ```python3 -m pip install pyinstaller```
 
 ![Raspi](screens/raspi-fdd.jpg)
