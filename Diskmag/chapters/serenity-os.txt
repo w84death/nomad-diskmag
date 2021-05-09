@@ -1,8 +1,9 @@
 5. Serenity OS
+Krzysztof Krystian Jankowski
+Everyday someone starts new "academic" operating system. One that is mostly use to learn low level and system programming. Sometimes, rarely this system becomes good enough that it attracts other hackers. In todays world opeartins systems are big, complicated and mostly bloated. From a need of something cleaner, slimmer and, fast rises Serenity OS. Serenity means calmness, peace, peacefulness. And it contineue to proof it's name.
 
-Clean
-
-Actualy works
+For many including me the golden age of operating systems was Windows 2000 era. The system was stable and clean. The UI is good looking and UX still intuitive. No one asked to change this but those days are gone.
+That's when Serenity OS comes in. It's main goal is to bring back those best aspects in a UNIX-like system. Many has tried before but somehow Serenity does it preoperly. And what's important it's not some idealistic idea but a real, working OS. And it's updated constantly getting more and more mature.
 
 Community
 

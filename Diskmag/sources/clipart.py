@@ -21,6 +21,7 @@ class Clipart:
 		self.transparent = transparent
 		self.palette = palette
 		self.Mag.scene.add(self)
+		self.timer = 0
 
 	def draw(self):
 		if self.clip == 'cover_0':
@@ -81,17 +82,68 @@ class Clipart:
 		x, y = pos
 		# green pcb, metal, black chip, yellow rings, 
 		pal = [(22,135,92), (159,143,143), (48, 42, 56), (243, 208, 104)]
-		pygame.draw.rect(self.Mag.screen, Color(pal[0]), (x,y,250,200))
+		r,g,b = pal[0]
+		pygame.draw.rect(self.Mag.screen, Color(r,g,b), (x,y,250,200))
 
 
 	def draw_fake_game(self, pos):
 		x, y = pos
 		s = self.Mag.screen
-		pal = [(128,128,128),(192,192,192),(200,255,200)]
-		max_z = 24
+		pal = [
+			(72,72,72),
+			(72,72,72),
+			(58,58,58),
+			(58,58,58),
+			(58,58,58),
+			(46,46,46),
+			(46,46,46),
+			(46,46,46),
+			(58,58,58),
+			(58,58,58),
+			(58,58,58)]
+		pal_green = [
+			(25,146,32),
+			(71,168,78),
+			(108,185,113),
+			(71,168,78)]
+		speed = 0.25
+		max_z = 22
+		fat = 1
+		last_y = 0
+		w = 32
+		shift_x = x
+		self.timer += speed*0.1
+		max_w = 512
+		car_w, car_l = 64,24
+		pygame.draw.rect(s,Color(191,230,255), (x-max_w*0.5,y-32,max_w,64))
 		for z in range(max_z):
-			pygame.draw.rect(s, self.get_shifted_color(0), (x,y-z, 256, 8))
+			f = fat + ( z * 1.5)
+			last_y += f - z*0.5
+			w += z * 2
+			shift_x = x + math.sin(self.timer + (max_z-z)*0.1) * (max_z-z)*4
+			shift_y = y + (1+math.sin((max_z-z)*0.25)) * 32
 
-	def get_shifted_color(self, id):
-		# FIXME shiftuj
-		return Color(self.palette[self.pal_shift + id])
+			# sky
+			pygame.draw.rect(s, self.get_shifted_color(pal_green, max_z-z), (x-max_w*0.5,shift_y+last_y, max_w, f+6))
+			
+			# landscape
+			
+			# road
+			pygame.draw.rect(s, self.get_shifted_color(pal, max_z-z), (shift_x-w/2,shift_y+last_y, w, f+6))
+
+		# car
+		cx = math.sin(self.timer)*24
+		pygame.draw.rect(s, Color(204,0,0), (x-car_w*0.5+cx,shift_y+last_y, car_w, car_l))
+			
+			
+			
+			
+
+		self.pal_shift += speed
+
+	def get_shifted_color(self, pal, id):
+		target, max = int(self.pal_shift) + id, len(pal)
+		if target >= max:
+			target = target % max
+		r,g,b = pal[target]
+		return Color(r,g,b)

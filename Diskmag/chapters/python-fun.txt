@@ -13,4 +13,6 @@ My perfect language shoudl have those features:
 
 And python have all  of those. It's not perfect but nothing is. 
 
-Where fun begins is on Raspberry Pi. Python is the main programming language in Raspberry ecosystem. It's already installed and configured. 
+Where fun begins is on Raspberry Pi. Python is the main programming language in its ecosystem. It's already installed and configured. Every accesory, sensor or monitor have library for python. And almost all instructions provides python examples.
+
+I always like to learn by doing some project. For sharping my skills with OOP in Python I created this aplication. I created classes for buttons, labels and so on. Orginized code in files. Lastly I discovered pyinstaller that pack everything in one executable file.

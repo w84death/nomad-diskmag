@@ -72,7 +72,11 @@ class MagazineIssue0(Mag):
 			Scene(Mag, Text, caption=title, title=title)
 			Text(Mag, author, pos=(70,60), color="#777777")
 			pages = Text(Mag, article, pos=(70,100)).pages
-			Clipart(Mag, "floppy", (hw+152+76,hh), transparent="#eeeeee",)
+			if filename == "python-fun.txt":
+				Clipart(Mag, "fake_game", (hw+320,128))
+			if filename == "why-pi.txt":
+				Clipart(Mag, "pi", (hw+320,128))
+
 			if pages > 0:
 				Button(Mag, "Change page..", (hw,bottom), "self.change_page()", pivot="center")
 			Button(Mag, "Next chapter", (right,bottom), "self.next_scene()", pivot="right")
